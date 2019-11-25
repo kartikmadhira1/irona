@@ -23,3 +23,15 @@ https://docs.google.com/spreadsheets/d/1VPSi_rlRrJmCR6A3MWS8m1NzFee9nrs-7Fvtm07F
 
 ## Sprint Planning
 https://docs.google.com/document/d/1W-qpNAWPG2eSJVatFzp8255uD5t4aVNCYX3F4T-HzEI/edit?usp=sharing
+
+## Dependencies
+
+## Build
+
+## Run
+
+## Test
+
+## Demo
+
+## Known issues/bugs
