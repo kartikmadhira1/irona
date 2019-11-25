@@ -16,3 +16,10 @@ place at the final checkout. Tiago++ is a mobile manipulator with two arms along
 components to assist picking and grasping of several shaped objects. The proposed package takes the
 map of the environment and the ArUco marker’s information associated with the package as the input
 and ultimately collect the box and deliver it at the desired location (checkout).
+
+
+## Agile Planning
+https://docs.google.com/spreadsheets/d/1VPSi_rlRrJmCR6A3MWS8m1NzFee9nrs-7Fvtm07FDjw/edit?usp=sharing
+
+## Sprint Planning
+https://docs.google.com/document/d/1W-qpNAWPG2eSJVatFzp8255uD5t4aVNCYX3F4T-HzEI/edit?usp=sharing
