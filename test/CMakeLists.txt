@@ -8,6 +8,8 @@ add_executable(
     #NavigationTest.cpp
     UserInterfaceTest.cpp
     WarehouseManagerTest.cpp
+    ../app/UserInterface.cpp
+    ../app/WarehouseManager.cpp
 )
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include ../vendor/googletest/googlemock/include 
                                            ${CMAKE_SOURCE_DIR}/include
