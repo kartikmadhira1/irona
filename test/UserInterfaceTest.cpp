@@ -33,21 +33,30 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <UserInterface.hpp>
+#include "../include/UserInterface.hpp"
 
 /*
  * @brief     Test input for 3 orders
  */
-TEST(userInterfaceTest, shouldReturnListOfOrder) {
-  UserInterface classUnderTest = new UserInterface();
-  auto result = classUnderTest.getListUser();
-  EXPECT_EQ(3,result.size());
+TEST(userInterfaceTest, shouldReturnDefaultItemList) {
+  UserInterface classUnderTest;
+  auto result = classUnderTest.getWarehouseManager().getObjectMap();
+  EXPECT_EQ((size_t)3,result.size());
 }
 
 TEST(userInterfaceTest, shouldAddItem) {
-  UserInterface classUnderTest = new UserInterface();
+  UserInterface classUnderTest;
   std::string orderItems[] = {"Ball", "Bat", "Chair"};
   std::vector<std::string> items (orderItems, orderItems + sizeof(orderItems) / sizeof(std::string));
   classUnderTest.addItem(items);
-  EXPECT_EQ(6, classUnderTest.getWarehouseItems().size());
+  EXPECT_EQ((size_t)6, classUnderTest.getWarehouseManager().getObjectMap().size());
+}
+
+TEST(userInterfaceTest, shouldReturnOrderList) {
+  UserInterface classUnderTest;
+  std::vector<std::string> orderList;
+  orderList.emplace_back("ball");
+  orderList.emplace_back("bat");
+  classUnderTest.setOrderList(orderList);
+  EXPECT_EQ((size_t)2, classUnderTest.getOrderList().size());
 }
