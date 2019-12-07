@@ -32,6 +32,7 @@
  */
 
 #include "../include/WarehouseManager.hpp"
+#include <exception>
 
 WarehouseManager::WarehouseManager(bool flag) {
   if (flag) {
@@ -54,6 +55,13 @@ void WarehouseManager::generateArUco(std::string nameOfObject) {
             cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
   cv::aruco::drawMarker(dictionary, this->objectMap.size(), 200, markerImage, 1);
   this->objectMap.emplace(nameOfObject, markerImage);
+}
+
+cv::Mat WarehouseManager::getArUco(std::string nameOfObject) {
+  if (nameOfObject.empty()) {
+    throw std::runtime_error("Invalid key for object map!");
+  }
+  return objectMap[nameOfObject];
 }
 
 WarehouseManager::~WarehouseManager() {
