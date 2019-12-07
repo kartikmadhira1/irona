@@ -36,25 +36,44 @@
 #include <WarehouseManager.hpp>
 #include <UserInterface.hpp>
 
-TEST(warehouseManagerTest, successfullyLaunchEnvironment) {
+/*TEST(warehouseManagerTest, successfullyLaunchEnvironment) {
   WarehouseManager classUnderTest = new WarehouseManager();
   result = classUnderTest.launchEnv(true);
   EXPECT_TRUE(result);
-}
+}*/
 
 TEST(warehouseManagerTest, shouldReturnArucoForChair) {
   std::vector<std::string> item;
-  item.pushback("Chair");
-  UserInterface userInterface = new UserInterface();
+  item.emplace_back("Chair");
+  UserInterface userInterface;
   userInterface.addItem(item);
-  WarehouseManager classUnderTest = new WarehouseManager();
-  result = classUnderTest.getArUco("Chair");
-  EXPECT_EQ(aruco.size(), result.size());
+  cv::Mat result = userInterface.getWarehouseManager().getArUco("Chair");
+  cv::Size expected(200,200);
+  EXPECT_EQ(expected, result.size());
 }
 
 TEST(warehouseManagerTest, shouldGenerateArucoTag) {
-  WarehouseManager classUnderTest = new WarehouseManager();
+  WarehouseManager classUnderTest = new WarehouseManager(true);
   classUnderTest.generateArUco("Chair");
-  result = classUnderTest.getArUco("Chair");
-  EXPECT_EQ(aruco.size(), result.size());
+  cv::Mat result = classUnderTest.getArUco("Chair");
+  cv::Size expected(200,200);
+  EXPECT_EQ(expected, result.size());
+}
+
+TEST(warehouseManagerTest, shouldThrowException) {
+  WarehouseManager classUnderTest = new WarehouseManager(true);
+  try {
+    cv::Mat result = classUnderTest.getArUco("");
+    FAIL();
+  }
+  catch (std::exception& err) {
+    EXPECT_EQ(std::string("Invalid key for object map!"), err.what());
+  }
+}
+
+TEST(warehouseManagerTest, shouldNotFindItem) {
+  WarehouseManager classUnderTest = new WarehouseManager(true);
+  cv::Mat result = classUnderTest.getArUco("Chair");
+  cv::Size expected;
+  EXPECT_EQ(expected, result.size());
 }
