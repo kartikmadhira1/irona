@@ -1,0 +1,15 @@
+material ARBlock5/Use
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture Marker5.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

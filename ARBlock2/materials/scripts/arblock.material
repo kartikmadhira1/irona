@@ -1,0 +1,15 @@
+material ARBlock2/Use
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture Marker2.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}
