@@ -1,0 +1,28 @@
+./include/IDetection.hpp:70:  Is this a non-const reference? If so, make const or use a pointer: std_msgs::Bool::ConstPtr& checkDetect  [runtime/references] [2]
+./include/Navigation.hpp:64:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal_pose  [runtime/references] [2]
+./include/INavigation.hpp:50:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal_pose  [runtime/references] [2]
+./include/INavigation.hpp:58:  Is this a non-const reference? If so, make const or use a pointer: geometry_msgs::PoseStampedPtr &goal_pose  [runtime/references] [2]
+arjun@gptarjun27:~/irona$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+./include/IDetection.hpp:70:  Is this a non-const reference? If so, make const or use a pointer: std_msgs::Bool::ConstPtr& checkDetect  [runtime/references] [2]
+Done processing ./include/IDetection.hpp
+Done processing ./include/UserInterface.hpp
+./include/Navigation.hpp:64:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal_pose  [runtime/references] [2]
+Done processing ./include/Navigation.hpp
+./include/INavigation.hpp:50:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal_pose  [runtime/references] [2]
+./include/INavigation.hpp:58:  Is this a non-const reference? If so, make const or use a pointer: geometry_msgs::PoseStampedPtr &goal_pose  [runtime/references] [2]
+Done processing ./include/INavigation.hpp
+Done processing ./include/WarehouseManager.hpp
+Done processing ./include/Detection.hpp
+Done processing ./src/NavigationMain.cpp
+Done processing ./src/DetectionMain.cpp
+Done processing ./src/UserInterface.cpp
+Done processing ./src/main.cpp
+Done processing ./src/Detection.cpp
+Done processing ./src/WarehouseManager.cpp
+Done processing ./src/Navigation.cpp
+Done processing ./test/test.cpp
+Done processing ./test/UserInterfaceTest.cpp
+Done processing ./test/DetectionTest.cpp
+Done processing ./test/NavigationTest.cpp
+Done processing ./test/WarehouseManagerTest.cpp
+Done processing ./test/ControllerTest.cpp
