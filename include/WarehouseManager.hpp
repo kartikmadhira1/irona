@@ -35,25 +35,33 @@
 #define INCLUDE_WAREHOUSEMANAGER_HPP_
 
 #include <iostream>
+#include <map>
+#include <vector>
+#include <string>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <vector>
+#include <opencv2/aruco.hpp>
 
 class WarehouseManager {
+ private:
+    std::map<std::string, cv::Mat> objectMap;
+
  public:
     /**
      * @brief   Default constructor of the class
+     * @param   flag to check if the default list needs to be intitialized
+     *          or not.
      */
-    WarehouseManager();
+    WarehouseManager(bool flag);  // NOLINT
     /**
      * @brief   Default desstructor of the class
      */
     ~WarehouseManager();
     /**
      * @brief   function to check if the environment is launched or not
-     * @param   flagEnv is a flag to check if the environment needs to be 
+     * @param   flagEnv is a flag to check if the environment needs to be
      *          launched or not
      * @return  boolean value determining if the action is successfully
      *          executed or not
@@ -72,5 +80,11 @@ class WarehouseManager {
      * @return  void
      */
     void generateArUco(std::string nameOfObject);
+    /**
+     * @brief   funtion to get the list of objects in the warehouse
+     * @param
+     * @return  map of the lisgt of the objects in the warehouse
+     */
+    std::map<std::string, cv::Mat> getObjectMap();
 };
 #endif  // INCLUDE_WAREHOUSEMANAGER_HPP_

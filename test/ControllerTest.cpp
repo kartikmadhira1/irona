@@ -35,12 +35,18 @@
 #include <gmock/gmock.h>
 #include <Controller.hpp>
 
+
+/**
+ * @brief Controller pickup test 
+ */
 TEST(controllerTest, shouldPickup) {
   Controller classUnderTest = new Controller();
   classUnderTest.pickup();
   SUCCEED();
 }
-
+/**
+ * @brief Controller drop at location test 
+ */
 TEST(controllerTest, shouldDrop) {
   Controller classUnderTest = new Controller();
   classUnderTest.drop();

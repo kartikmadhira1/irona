@@ -37,8 +37,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "WarehouseManager.hpp"
 
 class UserInterface {
+ private:
+    WarehouseManager warehouseManager;
+    std::vector<std::string> orderList;
+
  public:
     /**
      * @brief   Default constructor of the class
@@ -52,13 +57,25 @@ class UserInterface {
      * @brief   function to take the list of objects as input from the user
      * @return  vector of string with name of the objects
      */
-    std::vector<std::string> getListUser();
+    std::vector<std::string> getOrderList();
+    /**
+     * @brief   setter method for orderList object
+     * @param   vector of string list names
+     * @return  none
+     */
+    void setOrderList(std::vector<std::string> list);
     /**
      * @brief   function to check if the user wants to add any item
      * @param   item item to be added to the list
      * @return  void
      */
     void addItem(std::vector<std::string> item);
-}
+    /**
+     * @brief   Getter method for WarehouseManager
+     * @param   none
+     * @return  WarehouseManager object
+     */
+    WarehouseManager getWarehouseManager();
+};
 
 #endif  // INCLUDE_USERINTERFACE_HPP_

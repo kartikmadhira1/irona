@@ -33,19 +33,26 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <ros/ros.h>
 #include <Detection.hpp>
-#include <opencv2/core/mat.hpp>
 
-TEST(detectionTest, shouldFindObject) {
-  Detection classUnderTest = new Detetction();
-  cv::Mat Z = cv::Mat::zeros(720, 1280, CV_8U);
-  classUnderTest.findObject(z, z);
-  SUCCEED();
+
+/**
+ * @brief ArUco marker detection test 
+ */
+TEST(DetectionTest, shouldDetect) {
+  Detection classUnderTest;
+  std_msgs::Bool obj;
+  obj.data = true;
+  std_msgs::Bool::ConstPtr value(new std_msgs::Bool());
+  classUnderTest.detectionCallback(value);
+  classUnderTest.setTagDetected(obj);
+  ASSERT_TRUE(classUnderTest.getTagDetected().data);
 }
 
-TEST(detectionTest, shouldProcessInput) {
-  Detection classUnderTest = new Detetction();
-  cv::Mat Z = cv::Mat::zeros(720, 1280, CV_8U);
-  classUnderTest.processInput(z);
-  SUCCEED();
+/**
+ * @brief Successful compilation test 
+ */
+TEST(DetectionTest, shouldCompileSuccessfully) {
+  EXPECT_NO_FATAL_FAILURE(Detection detect);
 }

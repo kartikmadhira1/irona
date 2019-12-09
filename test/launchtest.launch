@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="irona" name="irona" type="irona" />
+    <test pkg="irona" test-name="testIrona" type="testIrona" />
+</launch>

@@ -34,18 +34,19 @@
 #ifndef INCLUDE_NAVIGATION_HPP_
 #define INCLUDE_NAVIGATION_HPP_
 
+#include <ros/ros.h>
+#include <move_base_msgs/MoveBaseAction.h>
+#include <actionlib/client/simple_action_client.h>
+#include <amcl/map/map.h>
+#include <tf/tf.h>
 #include <iostream>
-#include <opencv2/core/core.hpp>
-#include <opencv2/core/mat.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include <vector>
 #include "INavigation.hpp"
 
-/**
- * @brief   Virtual class for implementing the navigation aspect of the bot
- */
 
+/**
+ * @brief   Class for implementing the navigation aspect of the bot
+ */
 class Navigation : public INavigation {
  public:
     /**
@@ -58,31 +59,56 @@ class Navigation : public INavigation {
     ~Navigation();
     /**
      * @brief   function to navigate to the location of the detected object
-     * @param 
-     * @return  boolean value to determine 
-     */
-    bool getToLocation(move_base_msgs::MoveBaseGoal);
-    /**
-     * @brief   funtion to change the orientation for detecting the object.
      * @param   move_base_msgs ROS message to move towards the goal
-     * @return  boolean value to determine 
+     * @return  boolean value to determine if location is reached
      */
-    bool changeOrientation(move_base_msgs::MoveBaseGoal);
+    bool getToLocation(move_base_msgs::MoveBaseGoal &goal_pose);
     /**
-     * @brief   function to publish the ROS navigation messages
-     * @param   msg message to be sent to on this topic
+     * @brief   function to obtain the goal pose and set the private variable 
+     *          values
+     * @param   geometry_msgs::PoseStampedPtr data type of poses received
      * @return  void
      */
-    void publishNavigationMsgs(ROS::msg);
+    void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose);
     /**
-     * @brief   function to subscribe the ROS navigation messages
-     * @param   msg message to be subscribed to on this topic
+     * @brief   function to send the goal pose position in x y map
+     * @param   x, x coordinate of goal pose position in the map
+     * @param   y, y coordinate of goal pose position in the map
+     */
+    void goalTest(float x, float y, float theta);
+    /**
+     * @brief   function to set the value of isTest
+     * @param   flag to check if the function is called in testing time 
+     *          or in the main code
      * @return  void
      */
-    void subscribeNavigation(ROS::msg);
+    void setIsTest(bool flag);
+    /**
+     * @brief   function to get the value of the variable isTest
+     * @return  bool, the value of the isTest variable
+     */
+    bool getIsTest();
+    /**
+     * @brief   function to set the value of goalCheck
+     * @param   flag to check if the function is called in testing time 
+     *          or in the main code
+     * @return  void
+     */
+    void setGoalCheck(bool flag);
+    /**
+     * @brief   function to get the value of the variable goalCheck
+     * @return  bool, the value of the goalCheck variable
+     */
+    bool getGoalCheck();
+
  private:
     std::vector<float> location;
-    cv::Mat map;
+    ros::NodeHandle handler;
+    ros::Subscriber sub;
+    ros::Publisher pub;
+    ros::ServiceClient client;
+    bool goalCheck;
+    bool isTest;
 };
 
 #endif    // INCLUDE_NAVIGATION_HPP_

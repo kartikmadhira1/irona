@@ -1,0 +1,12 @@
+<launch>
+  <!-- <node 
+    pkg="irona" 
+    name="irona" 
+    type="irona"
+    output="screen"
+  /> -->
+<include file="$(find irona)/launch/aruco.launch">
+  </include>
+<include file="$(find irona)/launch/detection.launch">
+  </include>
+</launch>

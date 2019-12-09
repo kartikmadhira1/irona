@@ -1,0 +1,7 @@
+
+<launch>
+
+    <node name="navigation" pkg="irona"  type="navigation">
+</node>
+
+</launch>
