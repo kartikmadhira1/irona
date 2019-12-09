@@ -82,7 +82,7 @@ void Navigation::goalCheckCallback(const \
     }
 }
 
-void Navigation::goalTest(float x, float y) {
+void Navigation::goalTest(float x, float y, float theta) {
     geometry_msgs::PoseStamped check_pose;
     // setting the header values of check_pose
     check_pose.header.frame_id = "map";
@@ -90,6 +90,13 @@ void Navigation::goalTest(float x, float y) {
     check_pose.pose.position.x = x;
     check_pose.pose.position.y = y;
     check_pose.pose.orientation.w = 1;
+    tf::Quaternion q_rot;
+    q_rot = tf::createQuaternionFromRPY(0, 0, theta);
+    check_pose.pose.orientation.x = q_rot.getX();
+    check_pose.pose.orientation.y = q_rot.getY();
+    check_pose.pose.orientation.z = q_rot.getZ();
+    check_pose.pose.orientation.w = q_rot.getW();
+    pub.publish(check_pose);
     int i = 2;
     // while (i > 0) {
         pub.publish(check_pose);
@@ -100,7 +107,6 @@ void Navigation::goalTest(float x, float y) {
 }
 
 Navigation::~Navigation() {
-        std::cout << "it's coming here destroyed\n";
 }
 
 bool Navigation::getIsTest() {

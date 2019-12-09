@@ -37,7 +37,8 @@
 
 int main(int argc, char* argv[]) {
     ros::init(argc, argv, "navigation");
-    INavigation *p = new Navigation();
+    INavigation *navigate = new Navigation();
+    navigate->goalTest(0, 0, -80);
     ros::spin();
     return 0;
 }
