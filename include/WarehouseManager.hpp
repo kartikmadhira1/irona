@@ -54,7 +54,7 @@ class WarehouseManager {
      * @param   flag to check if the default list needs to be intitialized
      *          or not.
      */
-    explicit WarehouseManager(bool flag);
+    WarehouseManager(bool flag);
     /**
      * @brief   Default desstructor of the class
      */
