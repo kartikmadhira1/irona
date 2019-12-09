@@ -234,11 +234,12 @@ if(CATKIN_ENABLE_TESTING)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
   catkin_add_gtest(testIrona test/test.cpp
     #test/ControllerTest.cpp
-    #test/DetectionTest.cpp
+    test/DetectionTest.cpp
     test/UserInterfaceTest.cpp
     test/WarehouseManagerTest.cpp
     src/UserInterface.cpp
     src/WarehouseManager.cpp
+    src/Detection.cpp
     #src/main.cpp
     test/NavigationTest.cpp
     src/Navigation.cpp)
