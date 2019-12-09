@@ -23,12 +23,12 @@
  *******************************************************************************/
 
 /**
- * @file      Detection.hpp
+ * @file      Detection.cpp
  * @author    Kartik Madhira
  * @author    Arjun Gupta
  * @author    Aruna Baijal
  * @copyright MIT License (c) 2019 Kartik Madhira, Aruna Baijal, Arjun Gupta
- * @brief     Detection class Implementation
+ * @brief     Implements class Implementation
  */
 
 #include "../include/Detection.hpp"
@@ -41,6 +41,7 @@ Detection::Detection() {
 
 void Detection::detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect) {
     this->tagDetected = *checkDetect;
+	// if the marker is detected then publish the pose of the box
     if (detectTag()) {
         publishBoxPoses();
     }
@@ -48,6 +49,7 @@ void Detection::detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect) {
 
 bool Detection::detectTag() {
     bool flag;
+	// if listener fails then the exception is caught
 	try{
 		flag = true;
 		listener.lookupTransform("/map", "/aruco_marker_frame", 
@@ -73,7 +75,6 @@ bool Detection::detectTag() {
 
 void Detection::setTagId(int id) {
     ros::param::set("/aruco_single/marker_id", id);
-	std::cout << "idhar bhi chal raha\n";
     ros::spinOnce();
 }
 
