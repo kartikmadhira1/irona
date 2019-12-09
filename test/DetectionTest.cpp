@@ -36,6 +36,10 @@
 #include <ros/ros.h>
 #include <Detection.hpp>
 
+
+/**
+ * @brief ArUco marker detection test 
+ */
 TEST(DetectionTest, shouldDetect) {
   Detection classUnderTest;
   std_msgs::Bool obj;
@@ -46,6 +50,9 @@ TEST(DetectionTest, shouldDetect) {
   ASSERT_TRUE(classUnderTest.getTagDetected().data);
 }
 
+/**
+ * @brief Successful compilation test 
+ */
 TEST(DetectionTest, shouldCompileSuccessfully) {
   EXPECT_NO_FATAL_FAILURE(Detection detect);
 }

@@ -52,7 +52,7 @@ class Detection : public IDetection {
      */
     Detection();
     /**
-     * @brief   Default desstructor of the class
+     * @brief   Default destructor of the class
      */
     ~Detection();
     /**

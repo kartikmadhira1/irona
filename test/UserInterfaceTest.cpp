@@ -36,7 +36,7 @@
 #include "../include/UserInterface.hpp"
 
 /*
- * @brief     Test input for 3 orders
+ * @brief Test input for 3 orders
  */
 TEST(userInterfaceTest, shouldReturnDefaultItemList) {
   UserInterface classUnderTest;

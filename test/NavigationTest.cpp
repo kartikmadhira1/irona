@@ -36,6 +36,10 @@
 #include <ros/ros.h>
 #include <Navigation.hpp>
 
+
+/**
+ * @brief Navigation planner goal reach test
+ */
 TEST(navigationTest, shouldReachGoal) {
   // ros::NodeHandle nh;
   Navigation classUnderTest;

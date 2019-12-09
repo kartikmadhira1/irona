@@ -42,6 +42,10 @@
   EXPECT_TRUE(result);
 }*/
 
+/**
+ * @brief Warehouse ArUco marker generation test for
+ * specific object.
+ */
 TEST(warehouseManagerTest, shouldReturnArucoForChair) {
   std::vector<std::string> item;
   item.emplace_back("Chair");
@@ -52,6 +56,9 @@ TEST(warehouseManagerTest, shouldReturnArucoForChair) {
   EXPECT_EQ(expected, result.size());
 }
 
+/**
+ * @brief Warehouse ArUco marker generation test 
+ */
 TEST(warehouseManagerTest, shouldGenerateArucoTag) {
   WarehouseManager classUnderTest = new WarehouseManager(true);
   classUnderTest.generateArUco("Chair");
@@ -60,6 +67,9 @@ TEST(warehouseManagerTest, shouldGenerateArucoTag) {
   EXPECT_EQ(expected, result.size());
 }
 
+/**
+ * @brief Warehouse exception throw test
+ */
 TEST(warehouseManagerTest, shouldThrowException) {
   WarehouseManager classUnderTest = new WarehouseManager(true);
   try {
@@ -70,7 +80,9 @@ TEST(warehouseManagerTest, shouldThrowException) {
     EXPECT_EQ(std::string("Invalid key for object map!"), err.what());
   }
 }
-
+/**
+ * @brief Warehouse no item check test
+ */
 TEST(warehouseManagerTest, shouldNotFindItem) {
   WarehouseManager classUnderTest = new WarehouseManager(true);
   cv::Mat result = classUnderTest.getArUco("Chair");
