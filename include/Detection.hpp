@@ -37,16 +37,15 @@
 #include <ros/ros.h>
 #include <iostream>
 #include <vector>
-// #include <opencv2/core/core.hpp>
-// #include <opencv2/core/mat.hpp>
-// #include <opencv2/opencv.hpp>
-// #include <opencv2/highgui/highgui.hpp>
 #include <tf/transform_listener.h>
 #include "ros/ros.h"
 #include "geometry_msgs/PoseStamped.h"
 #include "std_msgs/Bool.h"
 #include "IDetection.hpp"
 
+/**
+ * @brief   Class for implementing the detection aspect of the bot
+ */
 class Detection : public IDetection {
  public:
     /**
@@ -58,41 +57,29 @@ class Detection : public IDetection {
      */
     ~Detection();
     /**
-     * @brief   function to find the object using the ArUco markers
-     * @param   map is the map of the environemnt
-     * @param   objectTag is the ArUco marker associated with the particular
-     *          object
-     * @return void
+     * @brief   function to set the tag ID for the tag
+     * @param   id associated with the ArUco marker of the object
+     * @return  void
      */
     void setTagId(int id);
     /**
-     * @brief   process the input ArUco tag that the bot needs to find
-     * @param   objectTag is the ArUco marker associated with the particular
-     *          object
-     * @return  void
+     * @brief   function to check if the tag is detected or not
+     * @return  bool if the tag is detected or not (true for yes)
      */
     bool detectTag();
     /**
-     * @brief   function to publish the ROS messages for detection of object
-     *          detection
+     * @brief   function to publish the pose of the detected object
      * @return  void
      */
     void publishBoxPoses();
     /**
-     * @brief   function to subscribe to the ROS messages published for object
-     *          detection
+     * @brief   function to check if the marker ID is same as the order
      * @return  void
-     */
-   //  void subscribeDetectionMsgs();
-    
+     */    
     void detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect); 
 
 
  private:
-   //  std::vector<cv::Mat> orderList;
-//  cv::Mat map;
-//  cv::Mat currFrame;
-//  std::vector< std::vector<float> > locations;
     ros::Subscriber tagSub;
     ros::NodeHandle handler;
     tf::TransformListener listener;
