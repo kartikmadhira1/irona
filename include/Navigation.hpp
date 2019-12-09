@@ -38,6 +38,7 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include <amcl/map/map.h>
+#include <tf/tf.h>
 #include <iostream>
 #include <vector>
 #include "INavigation.hpp"
@@ -74,7 +75,7 @@ class Navigation : public INavigation {
      * @param   x, x coordinate of goal pose position in the map
      * @param   y, y coordinate of goal pose position in the map
      */
-    void goalTest(float x, float y);
+    void goalTest(float x, float y, float theta);
     /**
      * @brief   function to set the value of isTest
      * @param   flag to check if the function is called in testing time 
