@@ -1,0 +1,12 @@
+<launch>
+  <!-- <node 
+    pkg="irona" 
+    name="irona" 
+    type="irona"
+    output="screen"
+  /> -->
+    <!-- <node pkg="irona" type="detection" name="detection">
+    </node> -->
+    <node name="detection" pkg="irona"  type="detection">
+</node>
+</launch>
