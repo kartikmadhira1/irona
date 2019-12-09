@@ -45,35 +45,41 @@ class INavigation {
     /**
      * @brief   Default constructor of the class
      */
-    INavigation();
+    // virtual INavigation() = 0;
     /**
      * @brief   Default desstructor of the class
      */
-    virtual ~INavigation();
+    // virtual ~INavigation() = 0;
     /**
      * @brief   function to navigate to the location of the detected object
      * @param   move_base_msgs ROS message to move towards the goal
      * @return  boolean value to determine 
      */
-    virtual bool getToLocation(move_base_msgs::MoveBaseGoal) = 0;
+    virtual bool getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) = 0;
     /**
      * @brief   funtion to change the orientation for detecting the object.
      * @param   move_base_msgs ROS message to move towards the goal
      * @return  boolean value to determine 
      */
-    virtual bool changeOrientation(move_base_msgs::MoveBaseGoal) = 0;
+    // virtual bool changeOrientation(move_base_msgs::MoveBaseGoal) = 0;
     /**
      * @brief   function to publish the ROS navigation messages
      * @param   msg message to be sent to on this topic
      * @return  void
-     */
-    virtual void publishNavigationMsgs(ROS::msg msg) = 0;
-    /**
-     * @brief   function to subscribe the ROS navigation messages
-     * @param   msg message to be subscribed to on this topic
-     * @return  void
-     */
-    virtual void subscribeNavigation(ROS::msg msg) = 0;
+    //  */
+    // virtual void publishNavigationMsgs(ROS::msg msg) = 0;
+    // /**
+    //  * @brief   function to subscribe the ROS navigation messages
+    //  * @param   msg message to be subscribed to on this topic
+    //  * @return  void
+    //  */
+    // virtual void subscribeNavigation(ROS::msg msg) = 0;
+
+    virtual void recieveTagPose() = 0;
+    virtual void recieveGoalPose() = 0;
+    virtual void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) = 0;   
+    virtual void goalTest(float x, float y) = 0;
+
 };
 
 #endif    // INCLUDE_INAVIGATION_HPP_
