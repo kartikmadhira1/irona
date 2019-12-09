@@ -34,13 +34,14 @@
 #ifndef INCLUDE_NAVIGATION_HPP_
 #define INCLUDE_NAVIGATION_HPP_
 
+#include <ros/ros.h>
 #include <iostream>
-#include <opencv2/core/core.hpp>
-#include <opencv2/core/mat.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <move_base_msgs/MoveBaseAction.h>
+#include <actionlib/client/simple_action_client.h>
 #include <vector>
+#include <amcl/map/map.h>
 #include "INavigation.hpp"
+
 
 /**
  * @brief   Virtual class for implementing the navigation aspect of the bot
@@ -61,28 +62,46 @@ class Navigation : public INavigation {
      * @param 
      * @return  boolean value to determine 
      */
-    bool getToLocation(move_base_msgs::MoveBaseGoal);
+    bool getToLocation(move_base_msgs::MoveBaseGoal &goal_pose);
     /**
      * @brief   funtion to change the orientation for detecting the object.
      * @param   move_base_msgs ROS message to move towards the goal
      * @return  boolean value to determine 
      */
-    bool changeOrientation(move_base_msgs::MoveBaseGoal);
+    bool changeOrientation(move_base_msgs::MoveBaseGoal &goal_pose);
     /**
      * @brief   function to publish the ROS navigation messages
      * @param   msg message to be sent to on this topic
      * @return  void
      */
-    void publishNavigationMsgs(ROS::msg);
-    /**
-     * @brief   function to subscribe the ROS navigation messages
-     * @param   msg message to be subscribed to on this topic
-     * @return  void
-     */
-    void subscribeNavigation(ROS::msg);
+   //  void publishNavigationMsgs(ROS::msg);
+   //  /**
+   //   * @brief   function to subscribe the ROS navigation messages
+   //   * @param   msg message to be subscribed to on this topic
+   //   * @return  void
+   //   */
+   //  void subscribeNavigation(ROS::msg);
+
+   //----------------------------------------
+
+   void recieveTagPose();
+   void recieveGoalPose();
+   void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose);   
+   void goalTest(float x, float y);
+   void setIsTest(bool flag);
+   bool getIsTest();
+   void setGoalCheck(bool flag);
+   bool getGoalCheck();
+
  private:
     std::vector<float> location;
-    cv::Mat map;
+    // cv::Mat map;
+    ros::NodeHandle handler;
+    ros::Subscriber sub;
+    ros::Publisher pub;
+    ros::ServiceClient client;
+    bool goalCheck;
+    bool isTest;
 };
 
 #endif    // INCLUDE_NAVIGATION_HPP_
