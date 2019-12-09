@@ -77,6 +77,9 @@ class Detection : public IDetection {
      */    
     void detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect);
 
+    void setTagDetected(std_msgs::Bool flag);
+    std_msgs::Bool getTagDetected();
+
  private:
     ros::Subscriber tagSub;
     ros::NodeHandle handler;

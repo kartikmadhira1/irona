@@ -82,3 +82,11 @@ void Detection::publishBoxPoses() {
 
 Detection::~Detection() {
 }
+
+std_msgs::Bool Detection::getTagDetected() {
+    return tagDetected;
+}
+
+void Detection::setTagDetected(std_msgs::Bool flag) {
+    tagDetected = flag;
+}
