@@ -68,16 +68,27 @@ class Detection : public IDetection {
     bool detectTag();
     /**
      * @brief   function to publish the pose of the detected object
+     * @param   None
      * @return  void
      */
     void publishBoxPoses();
     /**
      * @brief   function to check if the marker ID is same as the order
+     * @param   None
      * @return  void
      */    
     void detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect);
-
+    /**
+     * @brief   function to set if tag is to be detected
+     * @param   flag of boolean value
+     * @return  void
+     */   
     void setTagDetected(std_msgs::Bool flag);
+    /**
+     * @brief   function to check if tag is to detected
+     * @param   None
+     * @return  Bool value of std_msgs
+     */   
     std_msgs::Bool getTagDetected();
 
  private:
