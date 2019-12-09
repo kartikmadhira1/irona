@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="_detection_8cpp" kind="file"><name>Detection.cpp</name>
+  </compound>
+  <compound refid="_detection_main_8cpp" kind="file"><name>DetectionMain.cpp</name>
+    <member refid="_detection_main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="_navigation_8cpp" kind="file"><name>Navigation.cpp</name>
+    <member refid="_navigation_8cpp_1a21e20cc0b6656ae897b3cbb969b93241" kind="typedef"><name>MoveBaseClient</name></member>
+  </compound>
+  <compound refid="_navigation_main_8cpp" kind="file"><name>NavigationMain.cpp</name>
+    <member refid="_navigation_main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="_user_interface_8cpp" kind="file"><name>UserInterface.cpp</name>
+  </compound>
+  <compound refid="_warehouse_manager_8cpp" kind="file"><name>WarehouseManager.cpp</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>
