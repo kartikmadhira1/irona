@@ -5,26 +5,32 @@
 ---
 
 ## Overview
-With the advent of technology the emergence of robotics industry is quite evident. As the industry is
-evolving efforts are made to deploy robots in situations where the interaction of heavy machinery and
-humans is redundant. One such application is deployment in warehouse to move packages from one point
-to another. Warehouse setup poses several challenges to achieve this task. One of the challenges is to
-identify and locate the desired package in the cluttered environment.
-We propose to design a collection robot for fulfilling orders at the ACME warehouse. We will make use
-of a Tiago++ ground robot to scan the warehouse, identify orders to be picked up, collect them and
-place at the final checkout. Tiago++ is a mobile manipulator with two arms along with several other
-components to assist picking and grasping of several shaped objects. The proposed package takes the
-map of the environment and the ArUco marker’s information associated with the package as the input
-and ultimately collect the box and deliver it at the desired location (checkout).
+This repository contains the implementation of the Irona bot. Irona bot is designed for fulfilling orders at ACME warehouse. We make use of [Tiago](http://wiki.ros.org/Robots/TIAGo) ground robot to scan the warehouse, identify orders to be picked up, and return to checkout. Tiago is a mobile manipulator with an arm along with several other components to assist picking and grasping of several shaped objects. The proposed package takes the map of the environment and the ArUco marker’s information associated with the package as the input and ultimately identifies the box and return to checkout.
 
+We have simulated the environment in Gazebo with custom boxes we made and added the ArUco tags on all the sides of the boxes. For navigation purpose we generated the cost map (using gmapping) of the environment that is needed for Rviz. The demo video below demonstrate working of the module.
 
-## Agile Planning
-https://docs.google.com/spreadsheets/d/1VPSi_rlRrJmCR6A3MWS8m1NzFee9nrs-7Fvtm07FDjw/edit?usp=sharing
+## Important Note
 
-## Sprint Planning
-https://docs.google.com/document/d/1W-qpNAWPG2eSJVatFzp8255uD5t4aVNCYX3F4T-HzEI/edit?usp=sharing
+## Workflow Overview
+
+## Personnel
+Aruna Baijal: I am in my first semester of M.Engg. in Robotics at University of Maryland. My research interest lies in the field of computer vision. You can follow me on my [Linkedin](www.linkedin.com/in/arunabaijal).
+
+Arjun Gupta: I am in my first semester of M.Engg. in Robotics at University of Maryland. My research interest lies in the field of computer vision. You can follow me on my [Linkedin](https://www.linkedin.com/in/arjung27/).
+
+Kartik Madhira: I am in my third semester of M.Engg. in Robotics at University of Maryland. My research interest lies in the field of perception and planning. You can follow me on my [Linkedin](https://www.linkedin.com/in/kartik-madhira-aa1555115/).
+
+## Product Backlog
+[![Packagist](https://img.shields.io/badge/AIP-Backlog-orange)](https://docs.google.com/spreadsheets/d/1VPSi_rlRrJmCR6A3MWS8m1NzFee9nrs-7Fvtm07FDjw/edit?usp=sharing)
+[![Packagist](https://img.shields.io/badge/AIP-Sprint-brightgreen)](https://docs.google.com/document/d/1W-qpNAWPG2eSJVatFzp8255uD5t4aVNCYX3F4T-HzEI/edit)
 
 ## Dependencies
+1. A modified version of the aruco_ros source is used, replace the `[ros_workspace]/src/aruco_ros/aruco_ros/src/simple_single.cpp` with `simple_single.cpp` in `data` folder of this repo
+
+1. Unzip the `arblocks.zip` folder and copy the contents into the `$HOME/.gazebo/mmodels` folder in your machine. 
+
+1. Copy the world launch file from `data/test_file.world` into `[workspace_ros]/src/tiago_simulation/tiago_gazebo/worlds/` 
+1. 
 
 ## Build
 
