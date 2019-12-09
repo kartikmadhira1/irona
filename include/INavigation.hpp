@@ -37,47 +37,29 @@
 #include <iostream>
 
 /**
- * @brief   Class for implementing the navigation aspect of the bot
+ * @brief   Virtual Class for implementing the navigation aspect of the bot
  */
 
 class INavigation {
  public:
     /**
-     * @brief   Default constructor of the class
-     */
-    // virtual INavigation() = 0;
-    /**
-     * @brief   Default desstructor of the class
-     */
-    // virtual ~INavigation() = 0;
-    /**
      * @brief   function to navigate to the location of the detected object
      * @param   move_base_msgs ROS message to move towards the goal
-     * @return  boolean value to determine 
+     * @return  boolean value to determine if location is reached
      */
     virtual bool getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) = 0;
     /**
-     * @brief   funtion to change the orientation for detecting the object.
-     * @param   move_base_msgs ROS message to move towards the goal
-     * @return  boolean value to determine 
-     */
-    // virtual bool changeOrientation(move_base_msgs::MoveBaseGoal) = 0;
-    /**
-     * @brief   function to publish the ROS navigation messages
-     * @param   msg message to be sent to on this topic
+     * @brief   function to obtain the goal pose and set the private variable 
+     *          values
+     * @param   geometry_msgs::PoseStampedPtr data type of poses received
      * @return  void
-    //  */
-    // virtual void publishNavigationMsgs(ROS::msg msg) = 0;
-    // /**
-    //  * @brief   function to subscribe the ROS navigation messages
-    //  * @param   msg message to be subscribed to on this topic
-    //  * @return  void
-    //  */
-    // virtual void subscribeNavigation(ROS::msg msg) = 0;
-
-    virtual void recieveTagPose() = 0;
-    virtual void recieveGoalPose() = 0;
-    virtual void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) = 0;   
+     */ 
+    virtual void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) = 0;
+    /**
+     * @brief   function to send the goal pose position in x y map
+     * @param   x, x coordinate of goal pose position in the map
+     * @param   y, y coordinate of goal pose position in the map
+     */
     virtual void goalTest(float x, float y) = 0;
 
 };
