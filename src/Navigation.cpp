@@ -23,7 +23,7 @@
  *******************************************************************************/
 
 /**
- * @file      Navigation.hpp
+ * @file      Navigation.cpp
  * @author    Kartik Madhira
  * @author    Arjun Gupta
  * @author    Aruna Baijal
@@ -56,7 +56,7 @@ bool Navigation::getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) {
     ac.sendGoal(goal_pose);
 
     ac.waitForResult();
-
+    // check if the marker is detected then move the bot 1 meter forward
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
         ROS_INFO("Hooray, the base moved 1 meter forward");
     else
@@ -66,14 +66,10 @@ bool Navigation::getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) {
     return true;
 }
 
-void Navigation::recieveTagPose() {
-    // handler.subscribe()
-}
-
 void Navigation::goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) {
-    std::cout << "it's coming here\n";
     goalCheck = true;
     move_base_msgs::MoveBaseGoal goal;
+    // setting the header values of target_pose
     goal.target_pose.header.frame_id = goal_pose->header.frame_id;
     goal.target_pose.header.stamp = goal_pose->header.stamp;
     goal.target_pose.pose.position = goal_pose->pose.position;
@@ -85,12 +81,12 @@ void Navigation::goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pos
 
 void Navigation::goalTest(float x, float y) {
     geometry_msgs::PoseStamped check_pose;
+    // setting the header values of check_pose
     check_pose.header.frame_id = "map";
     check_pose.header.stamp = ros::Time::now();
     check_pose.pose.position.x = x;
     check_pose.pose.position.y = y;
     check_pose.pose.orientation.w = 1;
-    // while (pub.getNumSubscribers() < 1);
     int i = 2;
     // while (i > 0) {
         pub.publish(check_pose);
@@ -99,12 +95,6 @@ void Navigation::goalTest(float x, float y) {
     // ros::spinOnce();
 
     std::cout << "goalTest is working\n";
-
-}
-
-void Navigation::recieveGoalPose() {
-    // std::cout << "it's coming here\n";
-    ros::spinOnce();
 
 }
 
