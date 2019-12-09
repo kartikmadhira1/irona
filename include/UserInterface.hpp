@@ -37,7 +37,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "../include/WarehouseManager.hpp"
+#include "WarehouseManager.hpp"
 
 class UserInterface {
  private:
