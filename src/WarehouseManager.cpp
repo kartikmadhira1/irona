@@ -56,12 +56,10 @@ void WarehouseManager::generateArUco(std::string nameOfObject) {
             cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
   cv::aruco::drawMarker(dictionary, this->objectMap.size(), 200, markerImage, 1);
   this->objectMap.emplace(nameOfObject, markerImage);
-  /*cv::imshow("show", markerImage);
-  cv::waitKey(0);
-  cv::imwrite("~/" + std::to_string(this->objectMap.size()) + ".png", markerImage);*/
 }
 
 cv::Mat WarehouseManager::getArUco(std::string nameOfObject) {
+  // checks if the key passed to the map is valid or not
   if (nameOfObject.empty()) {
     throw std::runtime_error("Invalid key for object map!");
   }
