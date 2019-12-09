@@ -61,7 +61,7 @@ class INavigation {
      * @param   x, x coordinate of goal pose position in the map
      * @param   y, y coordinate of goal pose position in the map
      */
-    virtual void goalTest(float x, float y) = 0;
+    virtual void goalTest(float x, float y, float theta) = 0;
 };
 
 #endif    // INCLUDE_INAVIGATION_HPP_
