@@ -51,7 +51,7 @@ TEST(navigationTest, shouldReachGoal) {
   goal_pose->header.frame_id = "abc";
   goal_pose->header.stamp = ros::Time::now();
   // goal_pose.set();
-  classUnderTest.goalTest(1, 1);
+  classUnderTest.goalTest(1, 1 , 0);
   classUnderTest.goalCheckCallback(goal_pose);
   ASSERT_TRUE(classUnderTest.getGoalCheck());
 }

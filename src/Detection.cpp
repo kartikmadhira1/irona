@@ -36,7 +36,7 @@
 
 Detection::Detection() {
     tagSub = handler.subscribe("/ironaTags/arucoDetected", \
-                                    11, &Detection::detectionCallback, this);
+                                    1, &Detection::detectionCallback, this);
     pub = handler.advertise<geometry_msgs::PoseStamped>("boxPoses", 1, true);
 }
 
@@ -44,6 +44,7 @@ void Detection::detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect) {
     this->tagDetected = *checkDetect;
     // if the marker is detected then publish the pose of the box
     if (detectTag()) {
+        ROS_INFO_STREAM("A Tag has been detected!");
         publishBoxPoses();
     }
 }

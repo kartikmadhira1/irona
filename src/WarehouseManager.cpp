@@ -35,7 +35,7 @@
 #include <exception>
 #include<string>
 
-WarehouseManager::WarehouseManager(bool flag) {
+WarehouseManager::WarehouseManager(bool flag) {   // NOLINT
   if (flag) {
     std::vector<std::string> names{"bat", "ball", "wickets"};
     for (auto name : names) {
