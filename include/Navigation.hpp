@@ -44,9 +44,8 @@
 
 
 /**
- * @brief   Virtual class for implementing the navigation aspect of the bot
+ * @brief   Class for implementing the navigation aspect of the bot
  */
-
 class Navigation : public INavigation {
  public:
     /**
@@ -59,43 +58,50 @@ class Navigation : public INavigation {
     ~Navigation();
     /**
      * @brief   function to navigate to the location of the detected object
-     * @param 
-     * @return  boolean value to determine 
+     * @param   move_base_msgs ROS message to move towards the goal
+     * @return  boolean value to determine if location is reached
      */
     bool getToLocation(move_base_msgs::MoveBaseGoal &goal_pose);
     /**
-     * @brief   funtion to change the orientation for detecting the object.
-     * @param   move_base_msgs ROS message to move towards the goal
-     * @return  boolean value to determine 
-     */
-    bool changeOrientation(move_base_msgs::MoveBaseGoal &goal_pose);
-    /**
-     * @brief   function to publish the ROS navigation messages
-     * @param   msg message to be sent to on this topic
+     * @brief   function to obtain the goal pose and set the private variable 
+     *          values
+     * @param   geometry_msgs::PoseStampedPtr data type of poses received
      * @return  void
      */
-   //  void publishNavigationMsgs(ROS::msg);
-   //  /**
-   //   * @brief   function to subscribe the ROS navigation messages
-   //   * @param   msg message to be subscribed to on this topic
-   //   * @return  void
-   //   */
-   //  void subscribeNavigation(ROS::msg);
-
-   //----------------------------------------
-
-   void recieveTagPose();
-   void recieveGoalPose();
-   void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose);   
-   void goalTest(float x, float y);
-   void setIsTest(bool flag);
-   bool getIsTest();
-   void setGoalCheck(bool flag);
-   bool getGoalCheck();
+    void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose);
+    /**
+     * @brief   function to send the goal pose position in x y map
+     * @param   x, x coordinate of goal pose position in the map
+     * @param   y, y coordinate of goal pose position in the map
+     */
+    void goalTest(float x, float y);
+    /**
+     * @brief   function to set the value of isTest
+     * @param   flag to check if the function is called in testing time 
+     *          or in the main code
+     * @return  void
+     */
+    void setIsTest(bool flag);
+    /**
+     * @brief   function to get the value of the variable isTest
+     * @return  bool, the value of the isTest variable
+     */
+    bool getIsTest();
+    /**
+     * @brief   function to set the value of goalCheck
+     * @param   flag to check if the function is called in testing time 
+     *          or in the main code
+     * @return  void
+     */
+    void setGoalCheck(bool flag);
+    /**
+     * @brief   function to get the value of the variable goalCheck
+     * @return  bool, the value of the goalCheck variable
+     */
+    bool getGoalCheck();
 
  private:
     std::vector<float> location;
-    // cv::Mat map;
     ros::NodeHandle handler;
     ros::Subscriber sub;
     ros::Publisher pub;
