@@ -36,23 +36,25 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
+#include <string>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/aruco.hpp>
-#include <vector>
 
 class WarehouseManager {
  private:
     std::map<std::string, cv::Mat> objectMap;
+
  public:
     /**
      * @brief   Default constructor of the class
      * @param   flag to check if the default list needs to be intitialized
      *          or not.
      */
-    WarehouseManager(bool flag);
+    explicit WarehouseManager(bool flag);
     /**
      * @brief   Default desstructor of the class
      */

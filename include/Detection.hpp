@@ -35,10 +35,9 @@
 #define INCLUDE_DETECTION_HPP_
 
 #include <ros/ros.h>
+#include <tf/transform_listener.h>
 #include <iostream>
 #include <vector>
-#include <tf/transform_listener.h>
-#include "ros/ros.h"
 #include "geometry_msgs/PoseStamped.h"
 #include "std_msgs/Bool.h"
 #include "IDetection.hpp"
@@ -76,8 +75,7 @@ class Detection : public IDetection {
      * @brief   function to check if the marker ID is same as the order
      * @return  void
      */    
-    void detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect); 
-
+    void detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect);
 
  private:
     ros::Subscriber tagSub;

@@ -33,11 +33,11 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <Navigation.hpp>
 #include <ros/ros.h>
+#include <Navigation.hpp>
 
 TEST(navigationTest, shouldReachGoal) {
-  //ros::NodeHandle nh;
+  // ros::NodeHandle nh;
   Navigation classUnderTest;
   classUnderTest.setIsTest(true);
   geometry_msgs::PoseStampedPtr goal_pose(new geometry_msgs::PoseStamped);
@@ -50,8 +50,8 @@ TEST(navigationTest, shouldReachGoal) {
   goal_pose->pose.orientation.w = 1;
   goal_pose->header.frame_id = "abc";
   goal_pose->header.stamp = ros::Time::now();
-  //goal_pose.set();
-  classUnderTest.goalTest(1,1);
+  // goal_pose.set();
+  classUnderTest.goalTest(1, 1);
   classUnderTest.goalCheckCallback(goal_pose);
   ASSERT_TRUE(classUnderTest.getGoalCheck());
 }

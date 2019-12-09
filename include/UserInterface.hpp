@@ -43,6 +43,7 @@ class UserInterface {
  private:
     WarehouseManager warehouseManager;
     std::vector<std::string> orderList;
+
  public:
     /**
      * @brief   Default constructor of the class

@@ -35,13 +35,14 @@
 #include "../include/IDetection.hpp"
 
 Detection::Detection() {
-    tagSub = handler.subscribe("/ironaTags/arucoDetected", 11, &Detection::detectionCallback, this);
+    tagSub = handler.subscribe("/ironaTags/arucoDetected", \
+                                    11, &Detection::detectionCallback, this);
     pub = handler.advertise<geometry_msgs::PoseStamped>("boxPoses", 1, true);
 }
 
 void Detection::detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect) {
     this->tagDetected = *checkDetect;
-	// if the marker is detected then publish the pose of the box
+    // if the marker is detected then publish the pose of the box
     if (detectTag()) {
         publishBoxPoses();
     }
@@ -49,28 +50,25 @@ void Detection::detectionCallback(const std_msgs::Bool::ConstPtr& checkDetect) {
 
 bool Detection::detectTag() {
     bool flag;
-	// if listener fails then the exception is caught
-	try{
-		flag = true;
-		listener.lookupTransform("/map", "/aruco_marker_frame", 
-                                ros::Time(0), transform);
-
-		tagPose.header.frame_id = "map";
-		tagPose.header.stamp = ros::Time::now();
-		
-		tagPose.pose.position.x = transform.getOrigin().x();
-		tagPose.pose.position.y = transform.getOrigin().y();
-		tagPose.pose.position.z = 0;
-
-		tagPose.pose.orientation.x = 0;
-		tagPose.pose.orientation.y = 0;
-		tagPose.pose.orientation.z = transform.getRotation().z();
-		tagPose.pose.orientation.w = 1;
-	}
-	catch (const std::exception&){
-		flag = false;
-	}
-	return flag;
+    // if listener fails then the exception is caught
+    try {
+        flag = true;
+        listener.lookupTransform("/map", "/aruco_marker_frame",
+                                      ros::Time(0), transform);
+        tagPose.header.frame_id = "map";
+        tagPose.header.stamp = ros::Time::now();
+        tagPose.pose.position.x = transform.getOrigin().x();
+        tagPose.pose.position.y = transform.getOrigin().y();
+        tagPose.pose.position.z = 0;
+        tagPose.pose.orientation.x = 0;
+        tagPose.pose.orientation.y = 0;
+        tagPose.pose.orientation.z = transform.getRotation().z();
+        tagPose.pose.orientation.w = 1;
+    }
+    catch (const std::exception&) {
+        flag = false;
+    }
+    return flag;
 }
 
 void Detection::setTagId(int id) {
@@ -83,5 +81,4 @@ void Detection::publishBoxPoses() {
 }
 
 Detection::~Detection() {
-
 }

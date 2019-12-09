@@ -35,11 +35,11 @@
 #define INCLUDE_NAVIGATION_HPP_
 
 #include <ros/ros.h>
-#include <iostream>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
-#include <vector>
 #include <amcl/map/map.h>
+#include <iostream>
+#include <vector>
 #include "INavigation.hpp"
 
 

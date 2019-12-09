@@ -38,11 +38,9 @@
 WarehouseManager::WarehouseManager(bool flag) {
   if (flag) {
     std::vector<std::string> names{"bat", "ball", "wickets"};
-    for (auto name: names) {
+    for (auto name : names) {
       generateArUco(name);
     }
-  } else {
-
   }
 }
 
@@ -54,7 +52,8 @@ void WarehouseManager::generateArUco(std::string nameOfObject) {
   cv::Mat markerImage;
   cv::Ptr<cv::aruco::Dictionary> dictionary = \
             cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-  cv::aruco::drawMarker(dictionary, this->objectMap.size(), 200, markerImage, 1);
+  cv::aruco::drawMarker(dictionary, this->objectMap.size(), \
+                                                  200, markerImage, 1);
   this->objectMap.emplace(nameOfObject, markerImage);
 }
 
@@ -67,5 +66,4 @@ cv::Mat WarehouseManager::getArUco(std::string nameOfObject) {
 }
 
 WarehouseManager::~WarehouseManager() {
-
 }

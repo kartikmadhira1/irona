@@ -38,12 +38,6 @@
 int main(int argc, char* argv[]) {
     ros::init(argc, argv, "navigation");
     INavigation *p = new Navigation();
-    // p->goalTest(1,1);
-    // ros::Duration(30).sleep();
-    // p->recieveGoalPose();
-    // p->goalTest(5,3);
-    // p->recieveGoalPose();
     ros::spin();
-    // delete p;
     return 0;
 }

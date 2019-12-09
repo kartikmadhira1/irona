@@ -35,12 +35,13 @@
 #include "../include/Navigation.hpp"
 
 
-typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
+typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> \
+                                                         MoveBaseClient;
 
 Navigation::Navigation() {
     pub = handler.advertise<geometry_msgs::PoseStamped>("boxPoses", 10, true);
-    sub = handler.subscribe("/boxPoses", 1, &Navigation::goalCheckCallback, this);
-
+    sub = handler.subscribe("/boxPoses", 1, &Navigation::goalCheckCallback, \
+                                                                        this);
 }
 
 bool Navigation::getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) {
@@ -48,8 +49,8 @@ bool Navigation::getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) {
     MoveBaseClient ac("move_base", true);
 
     // Wait for the actionlib sever
-    while(!ac.waitForServer(ros::Duration(0.5))){
-        ROS_INFO("Waiting for the move_base action server to come up");
+    while (!ac.waitForServer(ros::Duration(0.5))) {
+        ROS_INFO_STREAM("Waiting for the move_base action server to come up");
     }
 
     ROS_INFO("Sending goal");
@@ -57,16 +58,18 @@ bool Navigation::getToLocation(move_base_msgs::MoveBaseGoal &goal_pose) {
 
     ac.waitForResult();
     // check if the marker is detected then move the bot 1 meter forward
-    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-        ROS_INFO("Hooray, the base moved 1 meter forward");
-    else
-        ROS_INFO("The base failed to move forward 1 meter for some reason");
+    if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
+        ROS_INFO_STREAM("Hooray, the base moved 1 meter forward");
+    } else {
+        ROS_INFO_STREAM(\
+                "The base failed to move forward 1 meter for some reason");
         return false;
-
+    }
     return true;
 }
 
-void Navigation::goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) {
+void Navigation::goalCheckCallback(const \
+                                    geometry_msgs::PoseStampedPtr &goal_pose) {
     goalCheck = true;
     move_base_msgs::MoveBaseGoal goal;
     // setting the header values of target_pose
@@ -74,7 +77,7 @@ void Navigation::goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pos
     goal.target_pose.header.stamp = goal_pose->header.stamp;
     goal.target_pose.pose.position = goal_pose->pose.position;
     goal.target_pose.pose.orientation = goal_pose->pose.orientation;
-    if(!getIsTest()) {
+    if (!getIsTest()) {
         getToLocation(goal);
     }
 }
@@ -93,14 +96,11 @@ void Navigation::goalTest(float x, float y) {
     //     i--;
     // }
     // ros::spinOnce();
-
     std::cout << "goalTest is working\n";
-
 }
 
 Navigation::~Navigation() {
         std::cout << "it's coming here destroyed\n";
-
 }
 
 bool Navigation::getIsTest() {

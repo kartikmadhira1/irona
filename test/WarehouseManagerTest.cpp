@@ -48,7 +48,7 @@ TEST(warehouseManagerTest, shouldReturnArucoForChair) {
   UserInterface userInterface;
   userInterface.addItem(item);
   cv::Mat result = userInterface.getWarehouseManager().getArUco("Chair");
-  cv::Size expected(200,200);
+  cv::Size expected(200, 200);
   EXPECT_EQ(expected, result.size());
 }
 
@@ -56,7 +56,7 @@ TEST(warehouseManagerTest, shouldGenerateArucoTag) {
   WarehouseManager classUnderTest = new WarehouseManager(true);
   classUnderTest.generateArUco("Chair");
   cv::Mat result = classUnderTest.getArUco("Chair");
-  cv::Size expected(200,200);
+  cv::Size expected(200, 200);
   EXPECT_EQ(expected, result.size());
 }
 

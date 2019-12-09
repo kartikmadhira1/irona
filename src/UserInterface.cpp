@@ -31,10 +31,10 @@
  * @brief     Implements UserInterface class
  */
 
-#include "UserInterface.hpp"
-#include "WarehouseManager.hpp"
 #include <string.h>
 #include <iostream>
+#include "UserInterface.hpp"
+#include "WarehouseManager.hpp"
 
 UserInterface::UserInterface() : warehouseManager(true) {
 }

@@ -54,14 +54,14 @@ class INavigation {
      * @param   geometry_msgs::PoseStampedPtr data type of poses received
      * @return  void
      */ 
-    virtual void goalCheckCallback(const geometry_msgs::PoseStampedPtr &goal_pose) = 0;
+    virtual void goalCheckCallback(const\
+                                 geometry_msgs::PoseStampedPtr &goal_pose) = 0;
     /**
      * @brief   function to send the goal pose position in x y map
      * @param   x, x coordinate of goal pose position in the map
      * @param   y, y coordinate of goal pose position in the map
      */
     virtual void goalTest(float x, float y) = 0;
-
 };
 
 #endif    // INCLUDE_INAVIGATION_HPP_

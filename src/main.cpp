@@ -37,7 +37,8 @@
 int main(int argc, char* argv[]) {
   // ros::init(argc, argv, "irona");
   UserInterface ui;
-  std::map<std::string, cv::Mat> objectMap = ui.getWarehouseManager().getObjectMap();
+  std::map<std::string, cv::Mat> objectMap = \
+                            ui.getWarehouseManager().getObjectMap();
   std::cout << "I am Irona, how can I help you?" << std::endl;
   std::cout << "This is the current list of item present in the" \
           " warehouse: " << std::endl;
@@ -72,8 +73,7 @@ int main(int argc, char* argv[]) {
     for (auto object : ui.getWarehouseManager().getObjectMap()) {
       std::cout << object.first << std::endl;
     }
-  }
-  else if (response != "n" && response != "N") {
+  } else if (response != "n" && response != "N") {
     std::cout << "Invalid Input !!! Exiting... Thank you for using Irona" \
               << std::endl;
     return -1;
@@ -95,13 +95,6 @@ int main(int argc, char* argv[]) {
   }
   itemList.emplace_back(newObject);
   ui.setOrderList(itemList);
-  // INavigation *p = new Navigation();
-  // p->goalTest(1,1);
-  // // ros::Duration(30).sleep();
-  // p->recieveGoalPose();
-  // p->goalTest(5,3);
-  // p->recieveGoalPose();
-  // delete p;
   return 0;
 }
 

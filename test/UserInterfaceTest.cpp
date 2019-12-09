@@ -41,15 +41,17 @@
 TEST(userInterfaceTest, shouldReturnDefaultItemList) {
   UserInterface classUnderTest;
   auto result = classUnderTest.getWarehouseManager().getObjectMap();
-  EXPECT_EQ((size_t)3,result.size());
+  EXPECT_EQ((size_t)3, result.size());
 }
 
 TEST(userInterfaceTest, shouldAddItem) {
   UserInterface classUnderTest;
   std::string orderItems[] = {"Ball", "Bat", "Chair"};
-  std::vector<std::string> items (orderItems, orderItems + sizeof(orderItems) / sizeof(std::string));
+  std::vector<std::string> items (orderItems, orderItems + sizeof(orderItems) /\
+                                                           sizeof(std::string));
   classUnderTest.addItem(items);
-  EXPECT_EQ((size_t)6, classUnderTest.getWarehouseManager().getObjectMap().size());
+  EXPECT_EQ((size_t)6, \
+                  classUnderTest.getWarehouseManager().getObjectMap().size());
 }
 
 TEST(userInterfaceTest, shouldReturnOrderList) {
